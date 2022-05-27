@@ -1,0 +1,46 @@
+.userInput {
+    display: flex;
+    width: 90%;
+    position: relative;
+    align-items: center;
+}
+
+.userInput__input {
+    width: 100%;
+    border-radius: 25px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    transition: 0.2s;
+    outline: none;
+    box-shadow: 0 0 5px rgb(136, 127, 127);
+}
+
+.userInput__input:focus {
+    box-shadow: 0 0 10px 1000px rgba(128, 113, 128, 0.612);
+}
+
+.input__submit {
+    position: absolute;
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 50px;
+    right: -.5rem;
+    border: none;
+    font-size: 1.2rem;
+    background-color: rgb(93, 89, 89);
+    color: black;
+    transition: 0.2s all;
+    box-shadow: 0 0 10px black;
+    font-family: 'Indie Flower', cursive;
+    font-weight: 700;
+}
+
+.input__submit:hover {
+    background-color: rgb(117, 113, 113);
+}
+
+.input__submit:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px black;
+}
