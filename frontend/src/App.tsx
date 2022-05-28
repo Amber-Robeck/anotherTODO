@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import UserInput from './components/UserInput/UserInput';
 import { Task } from './components/Task';
+import TaskList from './components/TaskList/TaskList';
 
 const App: React.FC = () => {
 
@@ -22,6 +23,7 @@ const App: React.FC = () => {
     <div className="App">
       <header className="header">Always Be Coding</header>
       <UserInput task={task} setTask={setTask} handleTask={handleTask} />
+      <TaskList tasks={tasks} setTasks={setTasks} />
     </div>
   );
 };
