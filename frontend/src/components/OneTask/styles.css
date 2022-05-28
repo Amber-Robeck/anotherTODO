@@ -1,0 +1,15 @@
+.task__single {
+    display: flex;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    background-color: purple;
+}
+
+.task__single--text {
+    flex: 1;
+    padding: .3rem;
+    border: none;
+    font-size: 2rem;
+}
