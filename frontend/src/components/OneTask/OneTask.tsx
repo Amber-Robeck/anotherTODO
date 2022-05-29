@@ -1,7 +1,7 @@
-import React from "react"
-import "./styles.css"
+import React from "react";
+import "./styles.css";
 import { Task } from "../Task";
-import { GrTrash, GrCheckmark, GrEdit } from "react-icons/gr"
+import { GrTrash, GrCheckmark, GrEdit } from "react-icons/gr";
 
 interface Props {
     task: Task;
@@ -15,6 +15,14 @@ const OneTask: React.FC<Props> = ({ task, tasks, setTasks }) => {
         setTasks(
             tasks.map((task) =>
                 task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
+            )
+        );
+    };
+
+    const handleDelete = (id: number) => {
+        setTasks(
+            tasks.filter((task) =>
+                task.id !== id
             )
         );
     };
@@ -33,12 +41,12 @@ const OneTask: React.FC<Props> = ({ task, tasks, setTasks }) => {
 
             <div>
                 <span className="icon"><GrEdit /></span>
-                <span className="icon"><GrCheckmark onClick={() => handleCompleted(task.id)} /></span>
-                <span className="icon" ><GrTrash /></span>
+                <span className="icon" onClick={() => handleCompleted(task.id)}><GrCheckmark /></span>
+                <span className="icon" onClick={() => handleDelete(task.id)} ><GrTrash /></span>
             </div>
         </form>
     )
-}
+};
 
 export default OneTask
 
