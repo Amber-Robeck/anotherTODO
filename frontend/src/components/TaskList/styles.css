@@ -1,6 +1,19 @@
 .tasks {
     display: flex;
-    justify-content: space-evenly;
-    width: 90%;
-    flex-wrap: wrap;
+    width: 48%;
+    flex-direction: column;
+    border-radius: .5rem;
+    background-color: rgb(109, 96, 109);
+}
+
+.container {
+    display: flex;
+    width: 95%;
+    margin-top: 1rem;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.tasks__heading {
+    font-size: 2rem;
 }

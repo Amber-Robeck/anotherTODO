@@ -49,7 +49,7 @@ const OneTask: React.FC<Props> = ({ task, tasks, setTasks }) => {
         <form className="task__single" onSubmit={(e) => handleEdit(e, task.id)}>
             {
                 editTask ? (
-                    <input className="task__single--text" value={editedTask} onChange={(e) => setEditedTask(e.target.value)} ref={editRef} />
+                    <input className="task__single--text input" value={editedTask} onChange={(e) => setEditedTask(e.target.value)} ref={editRef} />
                 ) : (
 
                     task.isCompleted ? (
@@ -61,7 +61,7 @@ const OneTask: React.FC<Props> = ({ task, tasks, setTasks }) => {
                     )
 
                 )
-            };
+            }
 
 
 
