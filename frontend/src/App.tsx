@@ -3,7 +3,7 @@ import './App.css';
 import UserInput from './components/UserInput/UserInput';
 import { Task } from './components/Task';
 import TaskList from './components/TaskList/TaskList';
-import { DragDropContext } from 'react-beautiful-dnd'
+import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
 const App: React.FC = () => {
 
@@ -19,10 +19,13 @@ const App: React.FC = () => {
     }
   };
 
+  const onDragEnd = (result: DropResult) => {
+    console.log(result)
+  };
   // console.log(task)
-  // console.log(tasks)
+  console.log(tasks)
   return (
-    <DragDropContext onDragEnd={() => { }}>
+    <DragDropContext onDragEnd={onDragEnd}>
       <div className="App">
         <header className="header">Always Be Coding</header>
         <UserInput task={task} setTask={setTask} handleTask={handleTask} />
