@@ -7,9 +7,20 @@
     background-color: rgb(100, 74, 100);
 }
 
+div {
+    display: flex;
+    align-items: center;
+}
+
 .task__single--text {
     flex: 1;
     padding: .3rem;
     border: none;
     font-size: 2rem;
+}
+
+.icon {
+    margin-left: .5rem;
+    font-size: 1rem;
+    cursor: pointer;
 }
