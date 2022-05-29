@@ -2,14 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import "./styles.css";
 import { Task } from "../Task";
 import { GrTrash, GrCheckmark, GrEdit } from "react-icons/gr";
+import { Draggable } from "react-beautiful-dnd";
 
 interface Props {
     task: Task;
     tasks: Task[];
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+    index: number;
 };
 
-const OneTask: React.FC<Props> = ({ task, tasks, setTasks }) => {
+const OneTask: React.FC<Props> = ({ task, tasks, setTasks, index }) => {
     const [editTask, setEditTask] = useState<boolean>(false);
     const [editedTask, setEditedTask] = useState<string>(task.task);
 
@@ -46,35 +48,44 @@ const OneTask: React.FC<Props> = ({ task, tasks, setTasks }) => {
     }, [editTask])
 
     return (
-        <form className="task__single" onSubmit={(e) => handleEdit(e, task.id)}>
+        <Draggable draggableId={task.id.toString()} index={index}>
             {
-                editTask ? (
-                    <input className="task__single--text input" value={editedTask} onChange={(e) => setEditedTask(e.target.value)} ref={editRef} />
-                ) : (
+                (provided) => (
+                    <form className="task__single" onSubmit={(e) => handleEdit(e, task.id)} {...provided.draggableProps}{...provided.dragHandleProps} ref={provided.innerRef}>
+                        {
+                            editTask ? (
+                                <input className="task__single--text input" value={editedTask} onChange={(e) => setEditedTask(e.target.value)} ref={editRef} />
+                            ) : (
 
-                    task.isCompleted ? (
-                        <s className="task__single--text">{task.task}</s>
+                                task.isCompleted ? (
+                                    <s className="task__single--text">{task.task}</s>
 
-                    ) : (
+                                ) : (
 
-                        <span className="task__single--text">{task.task}</span>
-                    )
+                                    <span className="task__single--text">{task.task}</span>
+                                )
+
+                            )
+                        }
+
+
+
+                        <div>
+                            <span className="icon" onClick={() => {
+                                if (!editTask) {
+                                    setEditTask(!editTask);
+                                }
+                            }}><GrEdit /></span>
+                            <span className="icon" onClick={() => handleCompleted(task.id)}><GrCheckmark /></span>
+                            <span className="icon" onClick={() => handleDelete(task.id)} ><GrTrash /></span>
+                        </div>
+                    </form>
 
                 )
             }
 
 
-
-            <div>
-                <span className="icon" onClick={() => {
-                    if (!editTask) {
-                        setEditTask(!editTask);
-                    }
-                }}><GrEdit /></span>
-                <span className="icon" onClick={() => handleCompleted(task.id)}><GrCheckmark /></span>
-                <span className="icon" onClick={() => handleDelete(task.id)} ><GrTrash /></span>
-            </div>
-        </form>
+        </Draggable>
     )
 };
 
