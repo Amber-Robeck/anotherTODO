@@ -58,12 +58,15 @@ This project is ran through Node.js, using an express server.
 
 Here are some screen shots of this application.
 
-Currently I do not have screenshots of this application
 
-<img src="" alt="" width="700"/>
+<img src="./src/assets/screenshot.png" alt="" width="700"/>
+
+<img src="./src/assets/edit.png" alt="" width="700"/>
+
+<img src="./src/assets/edited.png" alt="" width="700"/>
 
 
-    
+![GIF of page](./src/assets/ABC.gif "GIF of page")    
 
   ---
 
