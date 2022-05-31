@@ -50,7 +50,7 @@ This project is ran through Node.js, using an express server.
 * `clone the repository` 
 *  `npm install` in the command line to install the required dependencies. 
 *  open in the terminal and then `npm run start` to start the server!
-*  The server will start on `localhost:3001`
+*  The server will start on `localhost:3000`
 
   ---
 
