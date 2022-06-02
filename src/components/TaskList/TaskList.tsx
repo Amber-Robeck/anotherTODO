@@ -9,9 +9,10 @@ interface Props {
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
     completedTask: Task[];
     setCompletedTask: React.Dispatch<React.SetStateAction<Task[]>>;
+    // localSave: fn: (data: Task[]) => void;
 }
 
-const TaskList: React.FC<Props> = ({ tasks, setTasks, completedTask, setCompletedTask }) => {
+const TaskList: React.FC<Props> = ({ tasks, setTasks, completedTask, setCompletedTask, }) => {
     return (
         <div className="container">
             <Droppable droppableId="1">

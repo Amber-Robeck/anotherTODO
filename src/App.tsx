@@ -9,15 +9,29 @@ import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
 const App: React.FC = () => {
 
+  // const value = localStorage.getItem("taskList")
+
+  // if (typeof value === 'string') {
+  //   const parse = JSON.parse(value);
+  //   return parse
+  // }
+
   const [task, setTask] = useState<string>("");
-  const [tasks, setTasks] = useState<Task[]>([]);
+  // @ts-ignore
+  const [tasks, setTasks] = useState<Task[]>(JSON.parse(localStorage.getItem('taskList')) || []);
   const [completedTask, setCompletedTask] = useState<Task[]>([]);
+
+
+  const localSave = (data: Task[]) => {
+    localStorage.setItem('taskList', JSON.stringify(data));
+  };
 
   const handleTask = (e: React.FormEvent) => {
     e.preventDefault();
     if (task) {
       setTasks([...tasks, { id: Date.now(), task, isCompleted: false }]);
       setTask("");
+      localSave(tasks);
     }
   };
 

@@ -9,9 +9,10 @@ interface Props {
     tasks: Task[];
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
     index: number;
+    // localSave: (data: Task[]) => void;
 };
 
-const OneTask: React.FC<Props> = ({ task, tasks, setTasks, index }) => {
+const OneTask: React.FC<Props> = ({ task, tasks, setTasks, index, }) => {
     const [editTask, setEditTask] = useState<boolean>(false);
     const [editedTask, setEditedTask] = useState<string>(task.task);
 
@@ -21,6 +22,7 @@ const OneTask: React.FC<Props> = ({ task, tasks, setTasks, index }) => {
                 task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
             )
         );
+        // localSave(tasks)
     };
 
     const handleDelete = (id: number) => {
