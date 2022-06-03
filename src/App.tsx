@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import UserInput from './components/UserInput/UserInput';
 import { Task } from './components/Task';
@@ -9,31 +9,41 @@ import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
 const App: React.FC = () => {
 
-  // const value = localStorage.getItem("taskList")
-
-  // if (typeof value === 'string') {
-  //   const parse = JSON.parse(value);
-  //   return parse
-  // }
-
   const [task, setTask] = useState<string>("");
-  // @ts-ignore
-  const [tasks, setTasks] = useState<Task[]>(JSON.parse(localStorage.getItem('taskList')) || []);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [completedTask, setCompletedTask] = useState<Task[]>([]);
 
-
-  const localSave = (data: Task[]) => {
-    localStorage.setItem('taskList', JSON.stringify(data));
-  };
 
   const handleTask = (e: React.FormEvent) => {
     e.preventDefault();
     if (task) {
       setTasks([...tasks, { id: Date.now(), task, isCompleted: false }]);
       setTask("");
-      localSave(tasks);
     }
   };
+
+  useEffect(() => {
+    const localTask = localStorage.getItem("taskList");
+    if (localTask) {
+      setTasks(JSON.parse(localTask));
+    }
+  }, []);
+
+  // useEffect(() => {
+  //   const localCompletedTask = localStorage.getItem("CompletedTaskList");
+  //   if (localCompletedTask) {
+  //     setCompletedTask(JSON.parse(localCompletedTask));
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    localStorage.setItem('taskList', JSON.stringify(tasks));
+    // localStorage.setItem('completedTaskList', JSON.stringify(completedTask));
+  }, [tasks]);
+
+  // useEffect(() => {
+  //   localStorage.setItem('completedTaskList', JSON.stringify(completedTask));
+  // }, [completedTask]);
 
   const onDragEnd = (result: DropResult) => {
     // console.log(result)
