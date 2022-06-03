@@ -12,7 +12,7 @@ const App: React.FC = () => {
   const [task, setTask] = useState<string>("");
   const [tasks, setTasks] = useState<Task[]>([]);
   const [completedTask, setCompletedTask] = useState<Task[]>([]);
-
+  // console.log(completedTask)
 
   const handleTask = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,9 +30,11 @@ const App: React.FC = () => {
   }, []);
 
   // useEffect(() => {
-  //   const localCompletedTask = localStorage.getItem("CompletedTaskList");
+  //   const localCompletedTask = localStorage.getItem("completedTaskList");
   //   if (localCompletedTask) {
   //     setCompletedTask(JSON.parse(localCompletedTask));
+  //     // console.log(localCompletedTask);
+  //     // console.log("completed", completedTask)
   //   }
   // }, []);
 
@@ -42,7 +44,10 @@ const App: React.FC = () => {
   }, [tasks]);
 
   // useEffect(() => {
-  //   localStorage.setItem('completedTaskList', JSON.stringify(completedTask));
+  //   if (completedTask) {
+  //     localStorage.setItem('completedTaskList', JSON.stringify(completedTask));
+  //     console.log("completed2", completedTask)
+  //   }
   // }, [completedTask]);
 
   const onDragEnd = (result: DropResult) => {
@@ -71,6 +76,7 @@ const App: React.FC = () => {
     }
 
     setCompletedTask(complete);
+    // console.log(complete)
     setTasks(active);
   };
   // console.log(task)
